@@ -1,0 +1,45 @@
+<nav class="navbar bg-light navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand text-primary" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offNavbar"
+      aria-controls="offNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offNavbar" aria-labelledby="offNavbarLabel">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <% if (user) { %>
+          <li class="nav-item">
+            <a class="nav-link text-primary active" href="/users/profile/<%= user.id %>">Hi <%= user.firstName %></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary active" href="/users/logout">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary active"  href="/blogs/create">New Blog</a>
+          </li>
+          <%} else {%>
+            <li class="nav-item">
+              <a class="nav-link text-primary active" aria-current="page" href="/users/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary active" aria-current="page" href="/users/register">Register</a>
+            </li>
+          <%} %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid mt-3">
+  <% if (messages.success) { %>
+    <div class="alert alert-success"><%= messages.success %></div>
+  <% } %>
+  <% if (messages.error) { %>
+    <div class="alert alert-danger"><%= messages.error %></div>
+  <% } %>
+</div>
